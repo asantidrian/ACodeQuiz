@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(94, 230, 196);
+}
+
+p { 
+  color:#09282b;
+  padding:20px;
+}
+
+ul{
+  justify-content: center; 
+  text-align: center;
+}
+
+.button {
+  background: #1b747a;
+  border-radius: 10px;
+  color: beige;
+  cursor: pointer;
+  font-size:medium;
+  max-width: 250px;
+  padding: 10px 65px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.buttonAnswer {
+  background: #1b747a;
+  border-radius: 10px;
+  color: beige;
+  cursor: pointer;
+  font-size:medium;
+  max-width: 250px;
+  padding: 10px 65px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+.top-first-page {
+  padding-left: 10px;
+  padding-right:10px;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: beige;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #1b747a;
+  width:100%;
+}
+h3 {
+  color: beige; 
+}
+.first-page{
+  display:block;
+  text-align: center;
+  margin-top:200px;
+  margin-bottom:400px;
+  margin-left:200px;
+  margin-right:200px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color:beige;
+}
+.questions-page{
+  display:none;
+  justify-content: center;
+  text-align: center;
+  margin-top:200px;
+  margin-bottom:400px;
+  margin-left:200px;
+  margin-right:200px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color:beige;
+}
+
+.quiz-finish-page{
+  display:none;
+  text-align: center;
+  padding:30px;
+  margin-top:200px;
+  margin-bottom:400px;
+  margin-left:200px;
+  margin-right:200px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color:beige;
+}
+.score-page{ 
+  display:none;
+  text-align: center;
+  padding:30px;
+  margin-top:200px;
+  margin-bottom:400px;
+  margin-left:200px;
+  margin-right:200px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color:beige;
+}
+h1{
+  color: #1b747a;
+}
+h2{
+  color: #1b747a;
+  padding:20px;
+}
+h2{
+  color: #1b747a;
+  padding:20px;
+}
+.score-form{
+  display:inline;
+  color:#1b747a;
+}
+.submitBtn{
+margin:20px;
+border-radius: 25px;
+border-style: solid;
+}
+#initials{
+  margin:10px;
+}
+
+
+
+
+
+@media screen and (max-width: 1183px) {
+  main {
+    flex-direction: column;
+  }
+}
+ 
+
+  section {
+    background-color: white;
+    margin: 20px auto;
+    width: 92vw;
+  }
+
+
+@media screen and (max-width: 504px) {
+  .large-font {
+    font-size: 2em;
+  }
+
+  .timer {
+    height: 200px;
+  }
+ 
+}
