@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="top-first-page">
+        <h3 id="view-scores" >View Scores</h3>
+        <h3>Timer <span id="timer"></span></h3>
+      </div>
+      <div class="first-page">
+        <h1>Coding Quiz Challenge</h1>
+        <p> 
+          Try to answer the following code related questions within the Time
+          limit.Keep in mind that incorrect answers will penalize your score/time
+          by ten seconds
+        </p>
+        <button id="start-quiz-button" class="button">Start Quiz</button>
+      </div>
+      <div class="questions-page">
+        <p class="question"></p>
+      </div> 
+      <div class="quiz-finish-page"> 
+        <h1>All Done!!</h1>
+        <h2>Your Final Score is  <span id="final-score"></span></h2>
+        <form  method="POST">
+          <p>Enter Initials:
+          <label for="initials"></label><br>  
+          <input type="text" id="initials" name="initials"><br>
+          <button id="submitBtn" class= "button">Submit</button>
+          </p>
+        </form>
+      </div> 
+      <div class="score-page">
+        <h1 id="Highscores">Highscores</h1>
+          <button id="go-back-button" class="button">Go Back</button>
+          <button id="clear-score" class="button">Clear Highscores</button>
+      </div>
+
+     
+
+  
+
+
+
+    </main>
+    <script src="./assets/js/script.js"></script>
+</html>
