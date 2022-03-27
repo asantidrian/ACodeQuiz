@@ -100,7 +100,7 @@ h3 {
   border-color:beige;
 }
 .score-page{ 
-  display:none;
+  display: none;
   text-align: center;
   padding:30px;
   margin-top:200px;
@@ -135,7 +135,12 @@ border-style: solid;
   margin:10px;
 }
 
-
+/*.hide {
+  display:none;
+}
+.show{
+  display:block;
+}*/
 
 
 
