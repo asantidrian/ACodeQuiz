@@ -1,5 +1,5 @@
 var timer = document.getElementById("timer");
-var scoresBtn = document.getElementById("view-scores");
+var viewScores = document.getElementById("view-scores");
 var startBtn = document.getElementById("start-quiz-button");
 var topPage = document.querySelector(".top-first-page")
 var firstPage = document.querySelector(".first-page");
@@ -9,14 +9,16 @@ var finishPage = document.querySelector(".quiz-finish-page");
 var finalScore = document.getElementById("final-score");
 var goBackBtn = document.getElementById("go-back-button")
 var submitBtn = document.getElementById("submitBtn")
+var clearScore = document.getElementById("clear-score")
 var initialsForm = document.getElementById("initials-form")
-var initials = document.getElementById("initials")
-var scorePage = document.querySelector("score-page")
+
+var scorePage = document.querySelector(".score-page")
 var highscores = document.getElementById("Highscores")
 var answerCheck = document.createElement("h5")
 var choicesLength = 4;
 var questionNumber = 0;
 var score = 0;
+var numberDatalength=5;
 //dinamically create each question and possible answers
 var timerCount;
 var timeLeft=75;
@@ -48,14 +50,14 @@ var questions = [
     choices: ["Number and Strings", "Other arrays", "Booleans", "All of the above"],
     answer: "All of the above"
   }]
-
-
 function setTimer() {
   // Sets timer
-    
+  console.log("second step")
     var timerCount = setInterval(function () {
     timer.textContent = timeLeft + "s";
     timeLeft = timeLeft - 1;
+    console.log(questionNumber)
+
     if (timeLeft === 0) {
       // Clears interval and stops timer
       clearInterval(timerCount);
@@ -63,6 +65,7 @@ function setTimer() {
       quizFinish()
     }
     if (questionNumber === questions.length){
+      console.log(questionNumber)
       clearInterval(timerCount);
       timer.textContent=0
       quizFinish()
@@ -71,30 +74,49 @@ function setTimer() {
 }
 
 function startQuiz() {
-  setTimer()
+  console.log("first Step")
   firstPage.setAttribute("style", "display:none")
   questionsPage.setAttribute("style", "display:block")
+  setTimer()
   setQuestion()
 }
+  
+
 function quizFinish() {
   questionsPage.setAttribute("style", "display:none")
   finishPage.setAttribute("style", "display:block")
   finalScore.textContent = score * 100 / questions.length + "%"
+  //timer.textContent=timeLeft + "s";
+}
+
+function renderLastRegistered() {
+  var initials = localStorage.getItem("initials");
+  var scoreList = document.createElement("ul")
+  highscores.appendChild(scoreList)
+  var initialsPerson = document.createElement("li")
+  scoreList.appendChild(initialsPerson)
+  initialsPerson.textContent = initials + "----------" + finalScore.textContent
+  console.log(initialsPerson.textContent); 
 }
 function scoreRecord(event){
   event.preventDefault()
   event.stopPropagation()
- // topPage.setAttribute("style", "display:none")
- // firstPage.setAttribute("style", "display:none")
- // questionsPage.setAttribute("style", "display:none")
+  topPage.setAttribute("style","display:none")
+  finishPage.setAttribute("style","display:none")
+  scorePage.setAttribute("style","display:block")
   console.log(finalScore.textContent)
-  finishPage.setAttribute("style", "display:none")
-  scorePage.setAttribute("style", "display:block")
+  var initials = document.getElementById("initials").value
+  if (!initials) {
+    alert("Enter your intials!");
+  }
+  
+  localStorage.setItem("initials", initials);
+    renderLastRegistered();
 }
+
 function setQuestion() {
+  console.log("third Step")
   if (questionNumber < questions.length){
-  //  quizFinish()
-  //} else {
     console.log(questionNumber)
     question.textContent = questions[questionNumber].title;
     console.log(question.textContent)
@@ -103,6 +125,7 @@ function setQuestion() {
     console.log(questions[questionNumber].title);
 
     for (let j = 0; j < 4; j++) {
+      console.log(j)
       var li = document.createElement("li");
       listE1.appendChild(li);
       listE1.setAttribute("style", "list-style-type: none;");
@@ -119,7 +142,7 @@ function setQuestion() {
           answerCheck.textContent=""
           answerCheck.textContent = "Correct Answer!"
           score = (score + 1)
-          localStorage.setItem("score", JSON.stringify(score));
+          //localStorage.setItem("score", JSON.stringify(score));
         } else {
           questionsPage.appendChild(answerCheck)
           answerCheck.textContent=""
@@ -127,13 +150,47 @@ function setQuestion() {
           timeLeft = timeLeft - 10
         }
         questionNumber = questionNumber + 1;
+        console.log(questionNumber);
         setQuestion()
       }
     }
   }
 }
 startBtn.addEventListener("click", startQuiz);
-scoresBtn.addEventListener("click",scoreRecord); 
+submitBtn.addEventListener("click",scoreRecord); 
+viewScores.addEventListener("click",function end(){
+  topPage.setAttribute("style","display:none")
+  firstPage.setAttribute("style", "display:none")
+  scorePage.setAttribute("style","display:block")
+
+}
+)
+goBackBtn.addEventListener("click",function start(){
+topPage.setAttribute("style","display:flex","flex-wrap: wrap","justify-content: space-between")
+firstPage.setAttribute("style", "display:block")
+scorePage.setAttribute("style","display:none")
+var timeLeft=75;
+timer.textContent=timeLeft + "s";
+var questionNumber = 0;
+
+})
+clearScore.addEventListener("click",function deleteScore(){
+  topPage.setAttribute("style","display:none")
+  firstPage.setAttribute("style", "display:none")
+  scorePage.setAttribute("style","display:block")
+  localStorage.clear(initials);
+  })
+
+  
+
+
+
+/*function renderLastRegistered(){
+  topPage.setAttribute("style","display:none")
+  finishPage.setAttribute("style","display:none")
+  scorePage.setAttribute("style","display:block")
+  renderLastRegistered()
+});*/
 /*var lastScore = JSON.parse(localStorage.getItem("score"));
     if (lastScore !== null) {
       finalScore.textContent = lastScore* 100 / questions.length + "% of correct answer last time"
