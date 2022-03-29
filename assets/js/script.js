@@ -11,7 +11,6 @@ var goBackBtn = document.getElementById("go-back-button")
 var submitBtn = document.getElementById("submitBtn")
 var clearScore = document.getElementById("clear-score")
 var initialsForm = document.getElementById("initials-form")
-
 var scorePage = document.querySelector(".score-page")
 var highscores = document.getElementById("Highscores")
 var answerCheck = document.createElement("h5")
@@ -52,22 +51,22 @@ var questions = [
   }]
 function setTimer() {
   // Sets timer
+  console.log("QUESTION NUMBER IN SETTIMER " + questionNumber)
   console.log("second step")
+    
     var timerCount = setInterval(function () {
     timer.textContent = timeLeft + "s";
     timeLeft = timeLeft - 1;
-    console.log(questionNumber)
-
     if (timeLeft === 0) {
       // Clears interval and stops timer
       clearInterval(timerCount);
-      timer.textContent=0
+      timer.textContent=""
       quizFinish()
     }
     if (questionNumber === questions.length){
       console.log(questionNumber)
       clearInterval(timerCount);
-      timer.textContent=0
+      timer.textContent=""
       quizFinish()
     }
   }, 1000);
@@ -75,9 +74,16 @@ function setTimer() {
 
 function startQuiz() {
   console.log("first Step")
+  var questionNumber = 0;
+  console.log("QUESTION NUMBER BEFORE SETTIMER " + questionNumber)
   firstPage.setAttribute("style", "display:none")
   questionsPage.setAttribute("style", "display:block")
+  //if (questionNumber>questions.length){
+  //  var questionNumber = 0;
+  //  console.log(questionNumber + "dentro del if start quiz")
+  //}
   setTimer()
+  console.log("QUESTION NUMBER AFTER SETTIMER " + questionNumber)
   setQuestion()
 }
   
@@ -115,17 +121,16 @@ function scoreRecord(event){
 }
 
 function setQuestion() {
-  console.log("third Step")
-  if (questionNumber < questions.length){
-    console.log(questionNumber)
+
+    console.log("third Step")
+    console.log("questionNumber " + questionNumber)
     question.textContent = questions[questionNumber].title;
-    console.log(question.textContent)
     var listE1 = document.createElement("ul")
     question.appendChild(listE1);
     console.log(questions[questionNumber].title);
 
     for (let j = 0; j < 4; j++) {
-      console.log(j)
+      console.log("answer "+j)
       var li = document.createElement("li");
       listE1.appendChild(li);
       listE1.setAttribute("style", "list-style-type: none;");
@@ -150,11 +155,13 @@ function setQuestion() {
           timeLeft = timeLeft - 10
         }
         questionNumber = questionNumber + 1;
-        console.log(questionNumber);
+        console.log("questionNumber + 1: " + questionNumber);
+        if (questionNumber<questions.length){
         setQuestion()
+        }
       }
     }
-  }
+  
 }
 startBtn.addEventListener("click", startQuiz);
 submitBtn.addEventListener("click",scoreRecord); 
@@ -169,9 +176,9 @@ goBackBtn.addEventListener("click",function start(){
 topPage.setAttribute("style","display:flex","flex-wrap: wrap","justify-content: space-between")
 firstPage.setAttribute("style", "display:block")
 scorePage.setAttribute("style","display:none")
-var timeLeft=75;
-timer.textContent=timeLeft + "s";
-var questionNumber = 0;
+//var timeLeft=75;
+//timer.textContent=timeLeft + "s";
+//var questionNumber = 0;
 
 })
 clearScore.addEventListener("click",function deleteScore(){
