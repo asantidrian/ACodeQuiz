@@ -29,6 +29,6 @@ https://github.com/asantidrian/ACodeQuiz/blob/main/ACodeQuiz.gif
 ##Contact
 Email: asantidrian83@gmail.com
 Project link: https://github.com/asantidrian/ACodeQuiz
-
+Deploted Application's URL: https://asantidrian.github.io/ACodeQuiz/
 
 
