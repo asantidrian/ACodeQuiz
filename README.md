@@ -1,6 +1,6 @@
 # ACodeQuiz
 
-Instructions
+##Instructions
 Code quiz application that show a landing page with a start quiz button
 
 After "Start Quiz" button is clicked,the timer is inizialized, and initial page is hidden and replaced by a dynamically generated question and answer buttons. 
@@ -14,19 +14,19 @@ Clicking the link to view highscores will bring user to a table of locally store
 
 This project has been deployed to GitHub Pages. To get this project up and running, you can follow the deployment link. Or, download the sources files.
 
-Built With
+##Built With
 
 JavaScript
 Html
 CSS
 
-Usage
+##Usage
+
+https://github.com/asantidrian/ACodeQuiz/blob/main/ACodeQuiz.gif
 
 
 
-
-
-Contact
+##Contact
 Email: asantidrian83@gmail.com
 Project link: https://github.com/asantidrian/ACodeQuiz
 
